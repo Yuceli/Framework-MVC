@@ -1,3 +1,4 @@
+
 <?php  
 /**
 * 
@@ -6,7 +7,6 @@ class DashBoard extends Controller
 {
 	
 	function __construct() 
-
 	{   
 		parent::__construct();
 		Session::init();
@@ -16,6 +16,8 @@ class DashBoard extends Controller
 			header('location: ../login');
 			exit;
 		}
+
+		$this->view->js = array('dashboard/js/default.js');
 	}
 
 	function index(){
@@ -28,6 +30,21 @@ class DashBoard extends Controller
 		Session::destroy();
 		header('location: ../login');
 		exit;
+	}
+
+	function xhrInsert(){
+
+		$this->model->xhrInsert();
+
+	}
+
+	function xhrGetListings(){
+		
+		$this->model->xhrGetListings();
+	}
+
+	function xhrDeleteListing(){
+		$this->model->xhrDeleteListing();
 	}
 
 	

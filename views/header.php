@@ -6,6 +6,14 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo URL; ?>public/css/default.css">
 	<script type="text/javascript" scr="<?php echo URL; ?>public/js/jquery.js"></script>
 	<script type="text/javascript" scr="<?php echo URL; ?>public/js/custom.js"></script>	
+	<?php 
+		if(isset($this->js)){
+			foreach ($this->js as $js) {
+				 echo '<script type="text/javascript" scr="'.URL.'views/'.$js.'"></script>';
+			}
+          
+		}
+	?>	
 </head>
 
 <body>
