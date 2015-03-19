@@ -19,15 +19,23 @@
 <body>
     <?php Session::init(); ?>
 	<div id="header">
-		header
 		<br>
-		<a href="<?php echo URL; ?>index">Index</a>
-		<a href="<?php echo URL; ?>help">Help</a>
-		<?php if(Session::get('loggedIn') == true) :?>
-         <a href="<?php echo URL; ?>dashboard/logout">Logout</a>
-	<?php else: ?>
-		 <a href="<?php echo URL; ?>login">Login</a>
-	<?php endif ?>	
+		<?php if(Session::get('loggedIn') == false) :?>
+				<a href="<?php echo URL; ?>index">Index</a>
+				<a href="<?php echo URL; ?>help">Help</a>
+        <?php endif ?>	
+
+		<?php if(Session::get('loggedIn') == true):?>
+		        <a href="<?php echo URL; ?>dashboard">Dashboard</a>
+
+        <?php if(Session::get('role') == 'owner'):?>
+        <a href="<?php echo URL; ?>user">Users</a>
+        <?php endif ?>	
+
+         		<a href="<?php echo URL; ?>dashboard/logout">Logout</a>
+		<?php else: ?>
+		 		<a href="<?php echo URL; ?>login">Login</a>
+		<?php endif ?>	
 	</div>
 
 	<div id="content">
